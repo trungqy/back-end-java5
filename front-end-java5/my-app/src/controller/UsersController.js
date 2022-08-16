@@ -2,37 +2,39 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 class UsersController {
+
+
   getUser = async () => {
-    return await axios.get("http://localhost:8080/admin/users").then((res) => {
+    return await axios.get("http://localhost:8088/account").then((res) => {
       return res.data;
     });
   };
 
-  update = async (id,userName,passWord,email,role) => {
-    return await axios.put(`http://localhost:8080/admin/users/update/${id}`,{userName,passWord,email,role}).then((res) => {
+  update = async (id,userName,password,email,role) => {
+    return await axios.post(`http://localhost:8088/account/update/${id}`,{userName,password,email,role}).then((res) => {
       return res.data;
     });
   };
 
   onRemove = async (id) => {
-    return await axios.delete(`http://localhost:8080/admin/users/delete/${id}`,).then((res) => {
+    return await axios.delete(`http://localhost:8088/account/${id}`,).then((res) => {
       return res.data;
     });
   };
 
-  login = async (email,passWord) => {
-    return await axios.post("http://localhost:8080/login", {email, passWord })
+  login = async (email,password) => {
+    return await axios.post("http://localhost:8088/account/login", {email, password })
       .then((res) => {
         return res.data;
       });
   };
 
-  register = async (userName, passWord, email) => {
+  register = async (userName, password, email) => {
     const role = "user";
     return await axios
-      .post("http://localhost:8080/register", {
+      .post("http://localhost:8088/account", {
         userName,
-        passWord,
+        password,
         email,
         role,
       })
@@ -41,7 +43,7 @@ class UsersController {
       });
   };
   forgot = async (email) => {
-    return await axios.get(`http://localhost:8080/forgot/${email}` )
+    return await axios.get(`http://localhost:8088/account/forgot`,{email} )
       .then((res) => {
         return res.data;
       });

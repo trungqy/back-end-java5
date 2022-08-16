@@ -6,6 +6,7 @@ import { productController } from "../../../controller/ProductController";
 import ProductAdmin from "./ProductAdmin";
 import { categoriesController } from "../../../controller/CategoriesController";
 import { toast } from "react-toastify";
+import CategoryData from "../category/CategoryData";
 
 
 
@@ -14,16 +15,16 @@ function ListProduct() {
   const [selectedCategory, setSelectedCategory] = useState([]);
 
   const [selectedProduct, setSelectedProduct] = useState({
-    nameProduct: "",
+    name: "",
     price: "",
     categoryId:0,
     images: "",
     id: "",
   });
 
-  const onSetdata = (nameProduct, price, categoryId, images, id) => {
-    console.log(nameProduct, price, categoryId, images, id);
-    setSelectedProduct({ nameProduct, price, categoryId, images, id });
+  const onSetdata = (name, price, categoryId, images, id) => {
+    console.log(name, price, categoryId, images, id);
+    setSelectedProduct({ name, price, categoryId, images, id });
   };
   
 
@@ -42,10 +43,10 @@ function ListProduct() {
     });
   };
 
-  const onAdd = (img, nameProduct, categoryId, price, id) => {
+  const onAdd = (img, name, categoryId, price, id) => {
     
     if (id === "") {
-      productController.addProduct(img, nameProduct, categoryId, price).then((res) => {
+      productController.addProduct(img, name, categoryId, price).then((res) => {
         getProductListItem();
       });
       toast.success('thêm thành công', {
@@ -53,7 +54,7 @@ function ListProduct() {
         autoClose: 3000
     })
     } else {
-      productController.update(img, nameProduct, categoryId, price, id).then((res) => {
+      productController.update(id ,img, name, categoryId, price).then((res) => {
         getProductListItem();
       });
       toast.success('sửa thành công', {
@@ -62,7 +63,7 @@ function ListProduct() {
     })
     }
     setSelectedProduct({
-      nameProduct: "",
+      name: "",
       price: "",
       categoryId: categoryId,
       images: "",
@@ -76,7 +77,7 @@ const getCategories = () => {
   categoriesController.getCategories().then((res) => {
     setSelectedCategory(res);
     setSelectedProduct({
-      nameProduct: "",
+      name: "",
       price: "",
       categoryId: res[0].id,
       images: "",
@@ -101,7 +102,7 @@ const getCategories = () => {
     <div className="editDesign">
       <div className="container-left">
         <AddProduct
-          names={selectedProduct.nameProduct}
+          names={selectedProduct.name}
           id={selectedProduct.id}
           prices={selectedProduct.price}
           categoryIds={selectedProduct.categoryId}
@@ -115,11 +116,11 @@ const getCategories = () => {
         <div id="dssp">
           {data.map((item) => (
             <ProductAdmin
-              name={item.nameProduct}
+              name={item.name}
               images={item.images}
               price={item.price}
-              nameCate={item.nameCate}
-              categoryId={item.categoryId}
+              nameCate={item.nameCate} 
+              categoryId={item.category && item.category.nameCate}
               id={item.id}
               onRemove={onRemove}
               onSetdata={onSetdata}

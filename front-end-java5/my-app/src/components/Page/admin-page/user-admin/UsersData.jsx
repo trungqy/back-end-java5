@@ -51,7 +51,7 @@ export default function UserData({ data, onSetdata, onRemove, id }) {
         <TableHead>
           <TableRow> 
             <StyledTableCell width={200} align="right">UserName</StyledTableCell>
-            <StyledTableCell width={200} align="right">PassWord</StyledTableCell>
+            <StyledTableCell width={200} align="right">password</StyledTableCell>
             <StyledTableCell width={200} align="right">Email</StyledTableCell>
             <StyledTableCell width={200} align="right">Role</StyledTableCell>
             <StyledTableCell width={200} align="right">Action</StyledTableCell>
@@ -61,7 +61,7 @@ export default function UserData({ data, onSetdata, onRemove, id }) {
           {data.map((row, index) => (
             <StyledTableRow key={index}>
               <StyledTableCell align="right">{row.userName}</StyledTableCell>
-              <StyledTableCell align="right">{row.passWord}</StyledTableCell>
+              <StyledTableCell align="right">{row.password}</StyledTableCell>
               <StyledTableCell align="right">{row.email}</StyledTableCell>
               <StyledTableCell align="right">{row.role}</StyledTableCell>
 
@@ -71,7 +71,7 @@ export default function UserData({ data, onSetdata, onRemove, id }) {
                     onSetdata(
                       row.id,
                       row.userName,
-                      row.passWord,
+                      row.password,
                       row.email,
                       row.role
                     )

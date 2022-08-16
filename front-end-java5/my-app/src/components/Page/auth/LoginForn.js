@@ -20,8 +20,10 @@ export default function LoginForn() {
     }
   }, []);
 
-  const forgot = ()=>{
+  const forgot = (e)=>{
+    console.log(email);
     usersController.forgot(email).then(()=>{
+     
       toast.success('Moi ban xem mail', {
         position: 'bottom-left',
         autoClose: 3000

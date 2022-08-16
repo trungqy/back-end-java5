@@ -148,3 +148,7 @@ select{
     margin-left: 40px;
 }
 
+.san-pham img{
+    width: auto;
+    height: 150px;
+}

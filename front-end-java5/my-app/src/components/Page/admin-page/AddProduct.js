@@ -19,7 +19,7 @@ function  AddProduct({onAdd ,names,prices,categoryIds,imagess,id,listCate}) {
       <label htmlFor>Tên</label>
       <input defaultValue={name} onChange={(e)=> setNameProduct(e.target.value)} type="text" id="ten-sp" required />
       <label htmlFor>Hãng</label>
-      <select name="brand" onChange={(e)=> setCategoryId(e.target.value)} value={categoryId}>
+      <select name="brand" onChange={(e)=> setCategoryId(e.target.value)} value={categoryId} >
         {listCate.map(item => (
            <option value={item.id}>{item.nameCate}</option>
         ))}

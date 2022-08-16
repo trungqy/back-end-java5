@@ -88,13 +88,13 @@ export default function Index() {
         {/* <ImageSlider slides={SliderData}></ImageSlider> */}
       </section>
 
-      <input className="search" type="text" onChange={e  => search(e)} placeholder="tìm kiếm" />
+      <input className="search" type="text" onChange={e => search(e)} placeholder="tìm kiếm" />
 
       <div className="title-san-pham">
         <h1>Bàn Ghế Sofa</h1>
       </div>
       <section id="dsspsf">
-        {data.map(item => (<Product id={item.id} name={item.nameProduct} images={item.images} price={item.price} brand={item.brand} />))}
+        {data.map(item => (<Product id={item.id} name={item.name} images={item.images} price={item.price} brand={item.brand} />))}
       </section>
       <section className="showCase">
         <div className="mask">
@@ -119,7 +119,7 @@ export default function Index() {
         <h1>Kệ TiVi</h1>
       </div>
       <section id="dsspkt">
-        {data.map(item =>  (<Product id={item.id} name={item.nameProduct} images={item.images} price={item.price} brand={item.brand} />)) }
+        {data.map(item =>  (<Product id={item.id} name={item.name} images={item.images} price={item.price} brand={item.brand} />)) }
         
       </section>
       <section className="event">

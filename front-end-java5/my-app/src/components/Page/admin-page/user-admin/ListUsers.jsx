@@ -11,14 +11,14 @@ export default function ListUsers() {
   const [selectedUser, setSelectedUser] = useState({
     id: "",
     userName: "",
-    passWord: "",
+    password: "",
     email: "",
     role: "",
   });
 
-  const onSetdata = (id, userName, passWord, email, role) => {
-    setSelectedUser({ id, userName, passWord, email, role });
-    console.log(id, userName, passWord, email, role );
+  const onSetdata = (id, userName, password, email, role) => {
+    setSelectedUser({ id, userName, password, email, role });
+    console.log(id, userName, password, email, role );
   };
 
   console.log(selectedUser);
@@ -33,13 +33,13 @@ export default function ListUsers() {
     });
   };
 
-  const onAdd = (userName, passWord, email, role, id) => {
+  const onAdd = (userName, password, email, role, id) => {
     console.log("id" + id);
     if (selectedUser.id == "") {
-      console.log(userName, passWord, email, role);
+      console.log(userName, password, email, role);
       usersController
     
-        .register(userName, passWord, email)
+        .register(userName, password, email)
         .then((res) => {
           getUsers();
           
@@ -47,7 +47,7 @@ export default function ListUsers() {
         setSelectedUser({
           id: "",
           userName: "",
-          passWord: "",
+          password: "",
           email: "",
           role: "",
         });
@@ -58,13 +58,13 @@ export default function ListUsers() {
       })
     } else {
       usersController
-        .update(id, userName, passWord, email, role)
+        .update(id, userName, password, email, role)
         .then((res) => {
           getUsers();
           setSelectedUser({
             id: "",
             userName: "",
-            passWord: "",
+            password: "",
             email: "",
             role: "",
           });
@@ -95,7 +95,7 @@ export default function ListUsers() {
         <AddUsers
           id={selectedUser.id}
           userName={selectedUser.userName}
-          passWord={selectedUser.passWord}
+          passWord={selectedUser.password}
           email={selectedUser.email}
           role={selectedUser.role}
           key={Date.now()}

@@ -6,9 +6,9 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 
-export default function  AddUsers({onAdd, userName, passWord,email,role,id}) {
+export default function  AddUsers({onAdd, userName, password,email,role,id}) {
   const [userNames,setUserName]=useState(userName)
-  const [passWords,setPassWord]=useState(passWord)
+  const [passWords,setPassWord]=useState(password)
   const [emails,setEmail]=useState(email)
   const [roles,setRole]=useState(role)
 
@@ -17,7 +17,7 @@ export default function  AddUsers({onAdd, userName, passWord,email,role,id}) {
       <h2 className="title-them">Thêm User</h2>
       <label htmlFor>UserName</label>
       <input defaultValue={userNames} onChange={(e)=> setUserName(e.target.value)} type="text" id="ten-sp" />
-      <label htmlFor>PassWord</label>
+      <label htmlFor>password</label>
       <input defaultValue={passWords} onChange={(e)=> setPassWord(e.target.value)} type="text" id="hang-sp" />
       <label htmlFor>Email  </label>
       <input defaultValue={emails} onChange={(e)=> setEmail(e.target.value)} type="text" id="gia-sp" />
